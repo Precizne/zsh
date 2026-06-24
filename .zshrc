@@ -32,16 +32,15 @@ done
 # Post-Load & Integrations
 # =========================
 # Clock stop
-ZSH_BOOT_TIME_MS=$(( (EPOCHREALTIME - ZSH_BOOT_START) * 1000 ))
-printf "%.0f" $ZSH_BOOT_TIME_MS >! /tmp/zsh_boot_time.txt
+export ZSH_BOOT_TIME_MS=$(printf "%.0f" $(( (EPOCHREALTIME - ZSH_BOOT_START) * 1000 )))
 
 # Self destruct boot timer variable
 autoload -Uz add-zsh-hook
 _hide_boot_time() {
     unset ZSH_BOOT_TIME_MS
-    add-zsh-hook -d precmd _hide_boot_time
+    add-zsh-hook -d preexec _hide_boot_time
 }
-add-zsh-hook precmd _hide_boot_time
+add-zsh-hook preexec _hide_boot_time
 
 # Trigger End4's automatic Hyprland startup
 # if [ -f ~/.config/zshrc.d/auto-Hypr.sh ]; then

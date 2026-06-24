@@ -7,7 +7,6 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 alias mkdir='mkdir -p'
-alias fastfetch='fastfetch --logo-type kitty'
 
 # Kitty clear fixes & typos
 alias clear="printf '\033[2J\033[3J\033[1;1H'"
